@@ -1,0 +1,72 @@
+.pokemontemplate{
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@media screen and (min-width:62em) {
+    .pokemontemplate{
+        display: grid;
+        grid-template-columns: 1fr 200px 1fr;
+        grid-template-rows: repeat(1,1fr);
+        justify-items: center;
+        align-items: center;
+    }
+}
+.pokemontemplate > h2{
+    color: white;
+}
+@media screen and (min-width:62em) {
+    .pokemontemplate > h2{
+        order:1
+    }
+}
+.pokemontemplate__image,
+.pokemontemplate__data{
+    width: 350px;
+    height: 350px;
+    border: 0.7rem solid var(--poke-gold);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+@media screen and (min-width:48em) {
+    .pokemontemplate__image,
+    .pokemontemplate__data{
+        width: 380px;
+        height: 400px;
+    }
+}
+@media screen and (min-width:62em) {
+    .pokemontemplate__image,
+    .pokemontemplate__data{
+        width: 400px;
+    }   
+    .pokemontemplate__data{
+        order:2
+    }
+}
+@media  screen and (min-width:75em) {
+    .pokemontemplate__image,
+    .pokemontemplate__data{
+        width: 450px;
+    }   
+}
+.pokemontemplate__image > img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+.pokemontemplate__data{
+    flex-direction: column;
+}
+.pokemontemplate__data > p{
+    color: white;
+}

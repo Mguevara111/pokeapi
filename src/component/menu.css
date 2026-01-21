@@ -1,0 +1,37 @@
+.menu{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('./images/pokemon-pokmon-japanese-video-game-go-pokeball-28-10-2024-1730183224-hd-wallpaper.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-width:48em) {
+    .menu{
+        height: 100vh;
+    }
+}
+.menu__figure{
+    width: 300px;
+    height: 350px;
+    margin: 1rem;
+    border-radius: 2rem;
+    background-color: black;
+    border: 0.8rem solid var(--poke-gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+}
+.menu__img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}

@@ -1,0 +1,34 @@
+1. El concepto "Poké-Anatomy" (Enfoque en Visualización de Datos)
+En lugar de solo mostrar la imagen, haz que el Pokémon sea el centro de un dashboard técnico.
+
+La Idea: Cuando seleccionas un Pokémon, la interfaz cambia de color según su tipo elemental 
+(usando variables de CSS o Framer Motion).
+
+Elemento Diferenciador: Usa gráficos de radar (Radar Charts) para los stats (HP, Attack, Defense). 
+Esto demuestra que sabes integrar librerías de terceros como Recharts o Chart.js en React.
+
+Detalle Pro: Agrega una sección de "Debilidades y Fortalezas" comparativa. Si el usuario busca un segundo Pokémon, 
+puedes mostrar una simulación de quién ganaría basada en tipos y stats.
+
+2. El concepto "Instagram / Pokédex Social"
+Dale un giro moderno simulando una red social visual.
+
+La Idea: El feed muestra "avistamientos" de Pokémon. Las imágenes no son solo el sprite oficial, sino que usas 
+las versiones shiny o las ilustraciones de alta calidad de la API.
+
+Elemento Diferenciador: Implementa un Infinite Scroll real (usando Intersection Observer API). Es una habilidad 
+técnica muy valorada en Front-end que demuestra que sabes manejar grandes volúmenes de datos de forma eficiente.
+
+Interacción: Un botón de "Like" que guarde a los Pokémon en un localStorage o en un estado global (Context API/Redux), 
+permitiendo ver una lista de "Favoritos" sin base de datos.
+
+3. El concepto "Poké-Terminal" (Estética Retro-Futurista)
+Si te gusta el diseño más minimalista o tipo cyberpunk.
+
+La Idea: Una interfaz que parezca una terminal de computadora antigua o el sistema operativo de un laboratorio de Pokémon.
+
+Elemento Diferenciador: Usa efectos de escaneo de líneas (scanlines) y animaciones de texto tipo "typing effect" 
+para mostrar la descripción (flavor_text) del Pokémon.
+
+Toque Técnico: Implementa un buscador con Debounce. Esto es clave: demuestra que sabes optimizar llamadas a la 
+API para que no se dispare una petición por cada letra que el usuario escribe.
