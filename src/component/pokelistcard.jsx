@@ -2,9 +2,11 @@ import React from "react";
 import { useEffect,useState } from "react";
 import './pokelistcard.css';
 
-export function Pokelistcard({pokemon}){
+export function Pokelistcard({pokemon,handleselectpokemon,handlechangeroute}){
     const [singlepokemon,setSinglepokemon]=useState({});
-    
+    const [pokename,setPokename]=useState('');
+    const [pokesend,setPokesend]=useState('');      //datos del pokemon que se envia para verlos en buscador
+
     if(!pokemon){
         
         return;
@@ -19,8 +21,10 @@ export function Pokelistcard({pokemon}){
                 }
                 let data=await res.json();
                 //console.log('single',data)
+                setPokesend(data)
                 //**********paso solo imagenes que es lo que uso, nada mas */
                 setSinglepokemon(data.sprites.other.dream_world.front_default)
+                setPokename(data.name)
             } catch (error) {
                 
 
@@ -29,6 +33,13 @@ export function Pokelistcard({pokemon}){
         getpokemondata();
     },[])
 
+    const handlesendpokemon=()=>{
+        console.log('intento mandar')
+        handlechangeroute('search')
+        handleselectpokemon(pokesend)
+        setPokesend('')
+    }
+
     if(Object.entries(singlepokemon) === 0){
         return(<span className="loader"></span>);
         
@@ -36,12 +47,10 @@ export function Pokelistcard({pokemon}){
 
     
     return(
-        <figure className="pokelistcard__figure">
+        <figure className="pokelistcard__figure" onClick={handlesendpokemon}>
             <img src={singlepokemon} alt={singlepokemon.name} />
-            {/* ***************revisar si puedo poner imagen de other */}
-            
             <figcaption>
-                {String(pokemon.name).toUpperCase()}
+                {String(pokename).toUpperCase()}
             </figcaption>
         </figure>
     );

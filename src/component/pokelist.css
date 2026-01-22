@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* overflow-y:auto */
 }
 .pokelist > h2{
     padding: 1rem;
@@ -19,12 +20,30 @@
     justify-content: center;
     align-items: center;
 }
-/********interection element****************/
-/* .pokelist__loader{
-    width: 100%;
-    height: 300px;
+.pokelist__upbutton{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    background-color: var(--poke-gold);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 500;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    display: none;
-} */
+}
+.pokelist__upbutton--show{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+.pokelist__upbutton  svg{
+    fill: var(--poke-red);
+    width: 60px;
+    height: 60px;
+}

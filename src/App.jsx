@@ -17,6 +17,7 @@ const initialmessage={
 function App() {
  const [router,setRouter]=useState('menu'); //cambiar esto por main al final solo salto por la animacion
   const [message,setMessage]=useState(initialmessage);    //mensaje de aviso
+  const [pokemonpassed,setPokemonpassed]=useState('');    //pokemon pasado al template para dibujarlo
 
 useEffect(()=>{
   if(message){
@@ -29,11 +30,20 @@ useEffect(()=>{
 
  const handlechangeroute=(route)=>{
     setRouter(route)
+    if(route === 'menu' || route === 'main'){
+      setPokemonpassed('')
+    }
+    
  }
 
  const handlesetmessage=(messa)=>{
   console.log('messa',messa)
   setMessage(messa)
+ }
+
+ const handleselectpokemon=(pokemon)=>{
+  //aqui ponemos en el estado pokemonpassed el pokemon deseado para que muestre estadisticas en buscar
+  setPokemonpassed(pokemon)
  }
  
 
@@ -48,7 +58,12 @@ useEffect(()=>{
     return (
     <>
     <Message message={message}></Message>
-    <Buscador handlechangeroute={handlechangeroute} handlesetmessage={handlesetmessage}></Buscador>
+    <Buscador 
+        handlechangeroute={handlechangeroute} 
+        handlesetmessage={handlesetmessage} 
+        pokemonpassed={pokemonpassed}
+        handleselectpokemon={handleselectpokemon}
+    ></Buscador>
     </>
   );
  }
@@ -63,7 +78,12 @@ useEffect(()=>{
     return (
     <>
       <Message message={message}></Message>
-    <Pokelist handlechangeroute={handlechangeroute} handlesetmessage={handlesetmessage}></Pokelist>
+    <Pokelist 
+        handlechangeroute={handlechangeroute} 
+        handlesetmessage={handlesetmessage} 
+        handleselectpokemon={handleselectpokemon}>
+        
+    </Pokelist>
     </>
   );
  }

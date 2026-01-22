@@ -5,9 +5,9 @@ import { useState } from "react";
 import { Pokemontemplate } from "./pokemontemplate";
 import './buscador.css';
 
-export function Buscador({handlechangeroute,handlesetmessage}){
+export function Buscador({handlechangeroute,handlesetmessage,handleselectpokemon,pokemonpassed}){
     const [pokesearched,setPokesearched]=useState('');
-    const [pokemonpassed,setPokemonpassed]=useState('');    //pokemon pasado al template para dibujarlo
+    //const [pokemonpassed,setPokemonpassed]=useState('');    //pokemon pasado al template para dibujarlo
 
 const handlesearch=async ()=>{
     //console.log(pokesearched)
@@ -21,7 +21,8 @@ const handlesearch=async ()=>{
             }
         }
         let data= await res.json();
-        setPokemonpassed(data);
+        //setPokemonpassed(data);
+        handleselectpokemon(data)
         //console.log(data)
     } catch (error) {
         //console.log('no se encontro el pokemon')
