@@ -36,6 +36,10 @@
     align-items: center;
     margin-bottom: 1rem;
 }
+/* .pokemontemplate__image img{
+    filter: brightness(0%) saturate(100%) invert(1);
+    sombra blanca
+} */
 @media screen and (min-width:48em) {
     .pokemontemplate__image,
     .pokemontemplate__data{

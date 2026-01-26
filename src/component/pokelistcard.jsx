@@ -34,7 +34,7 @@ export function Pokelistcard({pokemon,handleselectpokemon,handlechangeroute}){
     },[])
 
     const handlesendpokemon=()=>{
-        console.log('intento mandar')
+        
         handlechangeroute('search')
         handleselectpokemon(pokesend)
         setPokesend('')

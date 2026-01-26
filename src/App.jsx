@@ -6,6 +6,7 @@ import { Menu } from './component/menu';
 import { useState,useEffect,useRef } from 'react';
 import { Message } from './component/message.jsx';
 import { Pokelist } from './component/pokelist.jsx';
+import { Whoispokemon } from './component/whoispokemon.jsx';
 import './App.css'
 
 const initialmessage={
@@ -17,7 +18,7 @@ const initialmessage={
 function App() {
  const [router,setRouter]=useState('menu'); //cambiar esto por main al final solo salto por la animacion
   const [message,setMessage]=useState(initialmessage);    //mensaje de aviso
-  const [pokemonpassed,setPokemonpassed]=useState('');    //pokemon pasado al template para dibujarlo
+  const [pokemonpassed,setPokemonpassed]=useState('');    //pokemon pasado de list a buscar para dibujarlo
 
 useEffect(()=>{
   if(message){
@@ -84,6 +85,15 @@ useEffect(()=>{
         handleselectpokemon={handleselectpokemon}>
         
     </Pokelist>
+    </>
+  );
+ }
+
+ if(router === 'who'){
+  return(
+    <>
+    <Message message={message}></Message>
+    <Whoispokemon handlechangeroute={handlechangeroute} handlesetmessage={handlesetmessage} ></Whoispokemon>
     </>
   );
  }

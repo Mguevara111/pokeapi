@@ -15,6 +15,7 @@ export function Pokelist({handlesetmessage,handlechangeroute,handleselectpokemon
     useEffect(()=>{
         const filllist=async ()=>{
             try {
+                //console.log(`https://pokeapi.co/api/v2/pokemon?offset=${scrollvalue}&limit=20`)
             let res=await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${scrollvalue}&limit=20`)
             if(!res.ok){
                 throw new Error('There was a problem connecting pokeapi')

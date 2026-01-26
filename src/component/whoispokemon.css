@@ -1,0 +1,126 @@
+.whoispokemon{
+    width: 100%;
+    height: auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.whoispokemon > h2{
+   
+    color: var(--poke-red);
+}
+.whoispokemon__returnbtn{
+     width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--poke-gold);
+    color:var(--poke-red);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+.whoispokemon__returnbtn > svg{
+    fill: var(--poke-red);
+    width: 40px;
+    height: 40px;
+}
+.whoispokemon__container{
+    width: 350px;
+    height: 400px;
+    background-image: url('./images/whobackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border: thick solid var(--poke-gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.whoispokemon__lettersimg{
+    width: 350px;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    bottom: 0.5rem;
+}
+.whoispokemon__p{
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+.whoispokemon__pokephoto{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0%);
+}
+.whoispokemon__pokephoto--show{
+    filter: brightness(100%);
+}
+.whoispokemon__answercont{
+    width: 100%;
+    height: auto;
+    border: thick solid var(--poke-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.whoispokemon__answercont > img {
+    width: 40px;
+    height: 40px;
+}
+/*******loader****************/
+.loader {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #FF3D00;
+  width: 6px;
+  height: 6px;
+  transform: translate(150%, 150%);
+  border-radius: 50%;
+}
+.loader::before {
+  left: auto;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  transform: translate(-150%, -150%);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 

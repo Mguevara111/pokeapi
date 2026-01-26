@@ -35,3 +35,6 @@
     object-fit: cover;
     object-position: center;
 }
+.menu__figure h2{
+    text-align: center;
+}
