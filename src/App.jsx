@@ -30,6 +30,7 @@ useEffect(()=>{
 
 
  const handlechangeroute=(route)=>{
+  //console.log('changeroute')
     setRouter(route)
     if(route === 'menu' || route === 'main'){
       setPokemonpassed('')

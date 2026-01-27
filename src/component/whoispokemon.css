@@ -1,6 +1,6 @@
 .whoispokemon{
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -61,6 +61,15 @@
     font-weight: 700;
     color: white;
     text-align: center;
+    margin: 0.4rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.whoispokemon__p--show{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 .whoispokemon__pokephoto{
     width: 300px;
@@ -68,6 +77,9 @@
     object-fit: cover;
     object-position: center;
     filter: brightness(0%);
+}
+.whoispokemon__pokephoto--show{
+    filter: brightness(100%);
 }
 .whoispokemon__pokephoto--show{
     filter: brightness(100%);
@@ -80,10 +92,21 @@
     justify-content: space-between;
     align-items: center;
 }
-.whoispokemon__answercont > img {
+.whoispokemon__answercont  img {
     width: 40px;
     height: 40px;
 }
+.whoispokemon__btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.whoispokemon__btn > p{
+    color: var(--poke-gold);
+}
+
 /*******loader****************/
 .loader {
   width: 200px;

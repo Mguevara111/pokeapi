@@ -4,16 +4,21 @@ import pokeball from './images/pokeball.png';
 import { useState,useEffect } from "react";
 import './whoispokemon.css';
 
+const generaterandom=()=>{
+    let ran=Math.floor(Math.random()*1025);
+    return ran;
+}
+
 export function Whoispokemon({handlechangeroute,handlesetmessage}){
     const [random,setRandom]=useState('');      //numero que determina pokemon a lazar
     const [pokemonchosed,setPokemonchosed]=useState('');    //pokemon seleccionado randomicamente
+    const [pokename,setPokename]=useState('');      //nombre de ingreso al input
+    const [state,setEstate]=useState('check');       //comprobar o intentar de nuevo
 
     useEffect(()=>{
-        
-            let ran=Math.floor(Math.random()*1025);
+        let ran1=generaterandom();
         //console.log(ran)
-        setRandom(ran)
-    
+        setRandom(ran1)
         
     },[])
 
@@ -21,7 +26,7 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
         const searchrandom=async ()=>{
             try {
                 let res=await fetch(`https://pokeapi.co/api/v2/pokemon/${random}`)
-                console.log(`fetch https://pokeapi.co/api/v2/pokemon/${random}`)
+                //console.log(`fetch https://pokeapi.co/api/v2/pokemon/${random}`)
                 if(!res.ok){
                     throw new Error('There was a problem searchin pokemon')
                 }
@@ -42,6 +47,62 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
         
     },[random])
 
+    useEffect(()=>{
+        
+    },[state])
+
+    const handlereload=()=>{
+        //console.log('reload')
+        let ran1=generaterandom();
+        setRandom(ran1)
+    }
+
+    const handlechange=(e)=>{
+        setPokename(e.target.value)
+    }
+
+    const handlecheckname=()=>{
+        if(!pokename){
+            const initialmessage={
+                        message:'Please input a pokemon name',
+                        color:'orange'
+            }
+            handlesetmessage(initialmessage);
+            setEstate('check')
+            return;
+        }
+        if(pokename.toLowerCase().trim() !== String(pokemonchosed.name).toLowerCase()){
+            //console.log('incorrecto')
+             const initialmessage={
+                        message:'Incorrect, please try again!',
+                        color:'orange'
+            }
+            handlesetmessage(initialmessage);
+            setEstate('again');
+            setPokename('');
+            return;
+        }
+        const initialmessage={
+                        message:'Correct!',
+                        color:'green'
+            }
+        handlesetmessage(initialmessage);
+        setEstate('again')
+        setPokename('');
+        //muestra pokemon y nombre
+    }
+
+    const handletest=()=>{
+        if(state === 'check'){
+            handlecheckname();
+            
+            return;
+        }else{
+            handlereload();
+            setEstate('check')
+        }
+    }
+
     if(!pokemonchosed){
         return(
             <span className="loader"></span>
@@ -56,16 +117,20 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
             </div>
             <article>
                 <div className="whoispokemon__container">
-                    <img className="whoispokemon__pokephoto" src={pokemonchosed.sprites.other["official-artwork"].front_default} alt={pokemonchosed.name} />
+                    <img className={`whoispokemon__pokephoto ${state === 'again'?'whoispokemon__pokephoto--show':''}`} src={pokemonchosed.sprites.other["official-artwork"].front_default} alt={pokemonchosed.name} />
                     
                     <img className="whoispokemon__lettersimg" src={letters} alt="who is that pokemon?" />
                 </div>
                 <div>
-                    <p className="whoispokemon__p">{pokemonchosed.name}</p>
+                   <p className={`whoispokemon__p ${state === 'again'?'whoispokemon__p--show':''}`}>{pokemonchosed.name}</p>
                 </div>
                 <div className="whoispokemon__answercont">
-                    <input type="text" />
-                    <img src={pokeball} alt="pokeball" />
+                    <input type="text" onChange={handlechange} value={pokename}/>
+                    <div className="whoispokemon__btn" onClick={handletest}>
+                        <img src={pokeball} alt="pokeball" />
+                        {state === 'check'?<p>Check</p>:<p>Try Again!</p>}
+                    </div>
+                    
                 </div>
             </article>
         </section>
