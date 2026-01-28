@@ -46,6 +46,21 @@
     align-items: center;
     
 }
+@media screen and (min-width:48em) {
+    .whoispokemon__container{
+        width: 600px;
+    }
+}
+@media screen and (min-width:62em) {
+    .whoispokemon__container{
+        width: 700px;
+    }
+}
+@media screen and (min-width:75em) {
+    .whoispokemon__container{
+        width: 450px;
+    }
+}
 .whoispokemon__lettersimg{
     width: 350px;
     height: auto;
@@ -87,10 +102,16 @@
 .whoispokemon__answercont{
     width: 100%;
     height: auto;
-    border: thick solid var(--poke-gold);
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+}
+@media screen and (min-width:62em) {
+    .whoispokemon__answercont{
+        justify-content: space-evenly;
+    }
 }
 .whoispokemon__answercont  img {
     width: 40px;
@@ -101,17 +122,57 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    
+    padding: 0 1rem;
 }
 .whoispokemon__btn > p{
     color: var(--poke-gold);
 }
-
+.whoispokemon__answercont > input{
+    width: 220px;
+    height: 40px;
+    color: var(--poke-gold);
+    font-size: 1.2rem;
+    border: thick solid var(--poke-gold);
+}
+@media screen and (min-width:48em) {
+    .whoispokemon__answercont > input{
+        width: 300px;
+    }
+}
+@media screen and (min-width:62em) {
+    .whoispokemon__answercont > input{
+        border-radius: 1rem;
+    }
+}
+@media screen and (min-width:75em) {
+    .whoispokemon__content{
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 200px 1fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+}
 /*******loader****************/
+.spinnerc{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.spinnerc > p{
+    font-size: 1.5rem;
+    color:white;
+}
 .loader {
-  width: 200px;
-  height: 200px;
-  border: 2px solid #FFF;
+  width: 150px;
+  height: 150px;
+  border: 10px solid #FFF;
   border-radius: 50%;
   display: inline-block;
   position: relative;

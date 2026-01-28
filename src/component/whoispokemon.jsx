@@ -100,12 +100,16 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
         }else{
             handlereload();
             setEstate('check')
+            setPokename('')
         }
     }
 
     if(!pokemonchosed){
         return(
-            <span className="loader"></span>
+            <section className="spinnerc">
+                <span className="loader"></span>
+                <p>Loading...</p>
+            </section>
         );
     }
 
@@ -115,7 +119,7 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
             <div>
                 <button className="whoispokemon__returnbtn" onClick={()=>handlechangeroute('menu')}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>Return</button>
             </div>
-            <article>
+            <article className="whoispokemon__content">
                 <div className="whoispokemon__container">
                     <img className={`whoispokemon__pokephoto ${state === 'again'?'whoispokemon__pokephoto--show':''}`} src={pokemonchosed.sprites.other["official-artwork"].front_default} alt={pokemonchosed.name} />
                     
@@ -125,7 +129,7 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
                    <p className={`whoispokemon__p ${state === 'again'?'whoispokemon__p--show':''}`}>{pokemonchosed.name}</p>
                 </div>
                 <div className="whoispokemon__answercont">
-                    <input type="text" onChange={handlechange} value={pokename}/>
+                    <input type="text" onChange={handlechange} value={pokename} placeholder="pokemon name"/>
                     <div className="whoispokemon__btn" onClick={handletest}>
                         <img src={pokeball} alt="pokeball" />
                         {state === 'check'?<p>Check</p>:<p>Try Again!</p>}
