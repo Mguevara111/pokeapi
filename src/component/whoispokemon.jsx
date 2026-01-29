@@ -38,6 +38,7 @@ export function Whoispokemon({handlechangeroute,handlesetmessage}){
                             color:'orange'
                         }
                 handlesetmessage(initialmessage);
+                handlechangeroute('menu')
             }
         }
 

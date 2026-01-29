@@ -6,7 +6,7 @@ import './pokelist.css';
 export function Pokelist({handlesetmessage,handlechangeroute,handleselectpokemon}){
     const [pokelist,setPokelist]=useState([]);  //lista de pokiemons
     const [scrollvalue,setScrollvalue]=useState(0);   //valor del offset para intersection observer, no es scroll
-    
+    //const [isloading,setIsloading]=useState(false);
 
     const refdiv=useRef(null);
     const refscroll=useRef(window.innerHeight);     //valor del tamaño vh
@@ -14,7 +14,9 @@ export function Pokelist({handlesetmessage,handlechangeroute,handleselectpokemon
 
     useEffect(()=>{
         const filllist=async ()=>{
+            
             try {
+                
                 //console.log(`https://pokeapi.co/api/v2/pokemon?offset=${scrollvalue}&limit=20`)
             let res=await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${scrollvalue}&limit=20`)
             if(!res.ok){
@@ -34,21 +36,24 @@ export function Pokelist({handlesetmessage,handlechangeroute,handleselectpokemon
                     color:'red'
             }
             handlesetmessage(errormessage)
-        }
+        } 
         }
         filllist();
-        
+       
     },[scrollvalue])
 
     
     useEffect(() => {
                 const observerCallback = (entries) => {
-                
+                if(pokelist.length === 0){
+                    return;
+                }
                 const [entry] = entries;
                 //para que no se active si esta cargando el elemento
-                if (entry.isIntersecting && !entry.isLoading) {  
-                    //console.log('aumenta 20')
+                if (entry.isIntersecting) {  
+                    console.log('aumenta 20')
                     setScrollvalue(prev=>prev+20)
+                  
                 }
                 
             };
@@ -70,12 +75,12 @@ export function Pokelist({handlesetmessage,handlechangeroute,handleselectpokemon
         // Cleanup function: stop observing when the component unmounts
         return () => {
           if (refdiv.current) {
-            observer.unobserve(targetRef.current);
+            observer.unobserve(refdiv.current);
           }
           
           observer.disconnect(); 
         };
-      }, []); 
+      }, [pokelist.length]); 
 
       useEffect(()=>{
          const handlescroll=(e)=>{
